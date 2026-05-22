@@ -1,0 +1,221 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #2b060a;
+    /* Rich dark burgundy background */
+    font-family: 'Marcellus', serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #f7e6c4;
+    position: relative;
+}
+
+/* Royal Card Layout with Intricate Borders */
+.card {
+    background: #420b11;
+    width: 100%;
+    max-width: 480px;
+    padding: 30px;
+    text-align: center;
+    position: relative;
+    z-index: 5;
+
+    /* Multi-layered traditional frame */
+    border: 4px double #d4af37;
+    outline: 16px solid #420b11;
+    box-shadow: 0 0 0 4px #d4af37, 0 25px 60px rgba(0, 0, 0, 0.8);
+    margin: 20px;
+
+    /* CRITICAL CHANGE: Traps all bursting hearts INSIDE the card */
+    overflow: hidden;
+    transition: background 1.5s ease-in-out;
+}
+
+/* The dynamic card blush transition on reveal */
+.card.revealed {
+    background: radial-gradient(circle, #5a1019 0%, #30050a 100%);
+}
+
+/* Elegant Top Banner */
+.banner-container {
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 6;
+    /* Keeps text above bursting elements */
+}
+
+.save-the-date-banner {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 24px;
+    color: #420b11;
+    background: linear-gradient(145deg, #f7e6c4, #d4af37);
+    padding: 10px 30px;
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: 2px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 2px;
+    position: relative;
+}
+
+/* Banner tails for a vintage look */
+.save-the-date-banner::before,
+.save-the-date-banner::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    border-width: 6px 6px 0 0;
+    border-style: solid;
+}
+
+.save-the-date-banner::before {
+    left: 10px;
+    border-color: #9a7b21 transparent;
+}
+
+.save-the-date-banner::after {
+    right: 10px;
+    border-color: #9a7b21 transparent;
+    transform: scaleX(-1);
+}
+
+.instruction {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: #d4af37;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0.8;
+    position: relative;
+    z-index: 6;
+}
+
+/* Scratch Container */
+.scratch-container {
+    position: relative;
+    width: 300px;
+    height: 280px;
+    margin: 0 auto 25px auto;
+    user-select: none;
+    z-index: 6;
+}
+
+/* Underneath Hidden Wedding Text Layout */
+.secret-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fffdf9;
+    /* Crisp contrast paper inside */
+    clip-path: path('M150,260 C-40,130 10,0 150,75 C290,0 340,130 150,260 Z');
+    padding: 30px;
+    text-align: center;
+    border: 2px solid #d4af37;
+}
+
+.marriage-headline {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #800c19;
+    margin-bottom: 5px;
+}
+
+.couple-names {
+    font-family: 'Great Vibes', cursive;
+    font-size: 40px;
+    color: #420b11;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.wedding-details {
+    font-size: 13px;
+    color: #2b2b2b;
+    line-height: 1.6;
+    font-weight: 600;
+}
+
+.wedding-details .date-highlight {
+    font-family: 'Marcellus', serif;
+    color: #800c19;
+    font-size: 15px;
+    border-top: 1px solid #d4af37;
+    border-bottom: 1px solid #d4af37;
+    padding: 4px 0;
+    margin: 8px 0;
+    display: block;
+    letter-spacing: 1px;
+}
+
+/* Foreground Canvas Layout */
+#scratch-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    z-index: 10;
+    transition: opacity 0.6s ease;
+}
+
+/* Bottom Traditional Greetings Frame */
+.greeting-wrapper {
+    border-top: 1px dashed rgba(212, 175, 55, 0.4);
+    padding-top: 20px;
+    margin-top: 15px;
+    position: relative;
+    z-index: 6;
+}
+
+.greeting-line {
+    font-size: 13px;
+    letter-spacing: 1px;
+    line-height: 1.6;
+    color: #f7e6c4;
+}
+
+/* Rich Animated Burst Hearts - Isolated Inside Card */
+.burst-heart {
+    position: absolute;
+    color: rgba(212, 175, 55, 0.65);
+    /* Vibrant Metallic Gold Hearts */
+    pointer-events: none;
+    z-index: 2;
+    /* Sits softly between background and text layers */
+    font-size: 18px;
+    animation: heartBlastInternal 4s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes heartBlastInternal {
+    0% {
+        transform: translate(0, 0) scale(0.2) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 0.8;
+    }
+
+    100% {
+        /* Simulates drifting downward inside the card after exploding */
+        transform: translate(var(--x-dest), var(--y-dest)) scale(var(--scale-dest)) rotate(var(--rot-dest));
+        opacity: 0;
+    }
+}
